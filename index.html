@@ -88,7 +88,11 @@
         <a href="#" onclick="showSection('nada')"></a>
 
     </nav>
-
+    <script src="contenido.js"></script>
+    <script>
+        document.getElementById('Amada').innerText = contenido.Amada;
+        document.getElementById('Espiritu').innerText = contenido.Espiritu;
+    </script>
     <h2>Oración</h2>
     <p id="Amada"></p>
 
@@ -286,11 +290,7 @@
         showSection('nada');
     </script>
 
-    <script src="contenido.js"></script>
-    <script>
-        document.getElementById('Amada').innerText = contenido.Amada;
-        document.getElementById('Espiritu').innerText = contenido.Espiritu;
-    </script>
+
 
 </body>
 </html>
