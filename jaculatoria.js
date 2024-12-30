@@ -1,4 +1,4 @@
-const={ 
+const jacularia = { 
 
 Oh mi buen Jesús, perdona nuestros pecados, líbranos del fuego del infierno, y lleva al cielo a todas las almas, especialmente a las más necesitadas  de Tu infinita misericordia.  Amén
 Jaculatoria en Divina Voluntad
