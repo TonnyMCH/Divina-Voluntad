@@ -1,4 +1,5 @@
 const jaculatoria =
 {
-    holas:"Oh mi buen Jesús, perdona nuestros pecados, líbranos del fuego del infierno, y lleva al cielo a todas las almas, especialmente a las más necesitadas  de Tu infinita misericordia.  Amén \n\n “Jesús: yo creo en tu amor por mí; hago mío todo y a todos en tu Voluntad porque te amo, y quiero amarte, alabarte, darte gracias, repararte y compensarte, por mí y por todos en tu Divina Voluntad, junto con María Santísima y Luisa”. "
+    holas:"Oh mi buen Jesús, perdona nuestros pecados, líbranos del fuego del infierno, y lleva al cielo a todas las almas, especialmente a las más necesitadas  de Tu infinita misericordia.  Amén \n\n “Jesús: yo creo en tu amor por mí; hago mío todo y a todos en tu Voluntad porque te amo, y quiero amarte, alabarte, darte gracias, repararte y compensarte, por mí y por todos en tu Divina Voluntad, junto con María Santísima y Luisa”. \n\n
+"Siempre Santa e indivisible trinidad, os adoro profundameite, os amo intensamente, os agradezco perpetuamente por todos y en los corazones de todos". "
 };
