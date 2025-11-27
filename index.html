@@ -3,250 +3,245 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Santo Rosario</title>
-  <link rel="icon" type="image/png" href="https://www.pucv.cl/uuaa/site/artic/20170609/imag/foto_0000000220170609125131.jpg">
+
   <link rel="manifest" href="manifest.json">
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js');
-    }
+  <link rel="icon" href="https://www.pucv.cl/uuaa/site/artic/20170609/imag/foto_0000000220170609125131.jpg">
 
-    function showSection(sectionId) {
-      // Ocultar todas las secciones
-      const sections = document.querySelectorAll(".section");
-      sections.forEach(section => section.style.display = "none");
-
-      // Mostrar la sección seleccionada
-      const sectionToShow = document.getElementById(sectionId);
-      if (sectionToShow) {
-        sectionToShow.style.display = "block";
-      }
-    }
-  </script>
   <style>
+    /* --- ESTILO GENERAL --- */
+    :root {
+      --fondo: #f4fcff;
+      --tarjeta: #ffffff;
+      --texto: #112233;
+      --primario: #0a7fd4;
+      --primario-suave: #cde9ff;
+    }
+
     body {
-     font-family: 'Times New Roman', serif;
-      font-size: 0.5cm;
-      color: black;
-      background-color: LightCyan;
-      text-align: justify;
-      margin: 20px;
-
-    }
-    a {
-      display: block;
-      margin: 10px 0;
-      text-decoration: none;
-      color: blue;
-    }
-        
-    a:hover {
-      color: darkblue;
-    }
-    .section {
-      display: none;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--fondo);
+      color: var(--texto);
+      padding-bottom: 80px; /* para la barra inferior */
     }
 
-    h1 {
+    h1, h2 {
       text-align: center;
-    }
- h2 {
-      text-align: center;
+      margin-bottom: 10px;
     }
 
     img {
       display: block;
       margin: auto;
-      max-width: 100%;
-      height: auto;
-      padding: 0; /* Eliminar relleno */
+      width: 100%;
+      max-width: 260px;
+      border-radius: 14px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
     }
 
+    /* --- TARJETAS DE CONTENIDO --- */
+    .section {
+      display: none;
+      padding: 15px;
+      margin: 15px;
+      background: var(--tarjeta);
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.09);
+      animation: fade 0.25s ease-in-out;
+    }
 
+    @keyframes fade {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
 
+    /* --- BOTONERA INFERIOR (TABS) --- */
+    .tabs {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: var(--tarjeta);
+      box-shadow: 0 -3px 12px rgba(0,0,0,0.15);
+      display: flex;
+      justify-content: space-around;
+      padding: 12px 0;
+      z-index: 999;
+    }
 
+    .tab {
+      text-align: center;
+      color: var(--primario);
+      font-weight: bold;
+      font-size: 14px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      transition: 0.2s;
+    }
+
+    .tab:hover {
+      background: var(--primario-suave);
+    }
+
+    .tab.active {
+      background: var(--primario-suave);
+    }
+
+    /* LINKS */
+    a {
+      color: var(--primario);
+      text-decoration: none;
+    }
+
+    nav p {
+      font-size: 15px;
+      margin: 5px 0;
+    }
   </style>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(s => s.style.display = "none");
+      const sec = document.getElementById(id);
+      if (sec) sec.style.display = "block";
+
+      document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+      const active = document.querySelector(`[data-tab="${id}"]`);
+      if (active) active.classList.add("active");
+    }
+  </script>
 </head>
+
 <body>
-    <h1>Santo Rosario</h1>
 
-    <img src="trinidad.jpg" alt="Imagen centrada y adaptable">
+  <h1>Santo Rosario</h1>
 
-    <!-- Navegación -->
-    <nav>
-        <p><strong>Miércoles y Domingos:</strong> <a href="#" onclick="showSection('gloriosos')">Misterios Gloriosos</a> </p>
-        <p><strong>Jueves:</strong> <a href="#" onclick="showSection('luminosos')">Misterios Luminosos</a> </p>
-        <p><strong>Martes y Viernes:</strong> <a href="#" onclick="showSection('dolorosos')">Misterios Dolorosos</a> </p>
-        <p><strong>Lunes y Sábado:</strong> <a href="#" onclick="showSection('gozosos')">Misterios Gozosos</a> </p>
+  <img src="trinidad.jpg">
 
-        <a href="#" onclick="showSection('nada')"></a>
+  <!-- SECCIONES -->
+  <div id="gloriosos" class="section">
+    <h2>Misterios Gloriosos</h2>
+    <p><strong>Oración</strong></p>
+    <p id="amada"></p>
+    <p><strong>Espíritu Santo</strong></p>
+    <p id="santo"></p>
+    <p><strong>Giro</strong></p>
+    <p id="giro"></p>
+    <p><strong>Acto de contrición</strong></p>
+    <p id="acto"></p>
+    <p><strong>Credo</strong></p>
+    <p id="credo"></p>
 
-    </nav>
+    <h2>🙏 Peticiones</h2>
 
+    <p id="miste"></p>
+  </div>
 
-    <!-- Secciones -->
-    <div id="gloriosos" class="section">
+  <div id="luminosos" class="section">
+    <h2>Misterios Luminosos</h2>
+    <p id="amada2"></p>
+    <p id="santo2"></p>
+    <p id="giro2"></p>
+    <p id="acto2"></p>
+    <p id="credo2"></p>
 
-        <h2>Oración Gloriosos</h2>
-        <p id="amada"></p>
+    <h2>🙏 Peticiones</h2>
+    <p id="miste2"></p>
+  </div>
 
-        <p><strong>Espíritu Santo! </strong></p>
-        <p id="santo"></p>
+  <div id="dolorosos" class="section">
+    <h2>Misterios Dolorosos</h2>
+    <p id="amada3"></p>
+    <p id="santo3"></p>
+    <p id="giro3"></p>
+    <p id="acto3"></p>
+    <p id="credo3"></p>
 
+    <h2>🙏 Peticiones</h2>
+    <p id="miste3"></p>
+  </div>
 
-        <p><strong>Giro - Oración inicial</strong></p>
-        <p id="giro"></p>
+  <div id="gozosos" class="section">
+    <h2>Misterios Gozosos</h2>
+    <p id="amada4"></p>
+    <p id="santo4"></p>
+    <p id="giro4"></p>
+    <p id="acto4"></p>
+    <p id="credo4"></p>
 
+    <h2>🙏 Peticiones</h2>
+    <p id="miste4"></p>
+  </div>
 
-        <p><strong>Acto de contrición En Divina Voluntad</strong></p>
-        <p id="acto"></p>
+  <div id="jaculatoria" class="section">
+    <h2>Jaculatoria</h2>
+    <p id="holas"></p>
+    <p><a href="letanias.html">→ Letanías de la Virgen</a></p>
+  </div>
 
-        <p><strong>Credo</strong></p>
-        <p id="credo"></p>
+  <!-- BARRA DE NAVEGACIÓN INFERIOR -->
+  <div class="tabs">
+    <div class="tab" data-tab="gloriosos" onclick="showSection('gloriosos')">Gloriosos</div>
+    <div class="tab" data-tab="luminosos" onclick="showSection('luminosos')">Luminosos</div>
+    <div class="tab" data-tab="dolorosos" onclick="showSection('dolorosos')">Dolorosos</div>
+    <div class="tab" data-tab="gozosos" onclick="showSection('gozosos')">Gozosos</div>
+    <div class="tab" data-tab="jaculatoria" onclick="showSection('jaculatoria')">Más</div>
+  </div>
 
-        <h2>Peticiones <br /> 🙏🙏🙏</h2>
+  <!-- CARGA DE TEXTOS -->
+  <script src="contgloriosos.js"></script>
+  <script>
+    amada.innerText = contgloriosos.amada;
+    santo.innerText = contgloriosos.santo;
+    giro.innerText = contgloriosos.giro;
+    acto.innerText = contgloriosos.acto;
+    credo.innerText = contgloriosos.credo;
+    miste.innerText = contgloriosos.miste;
+  </script>
 
-        <h2>Misterios Gloriosos</h2>
-        <p id="miste"></p>
+  <script src="contluminosos.js"></script>
+  <script>
+    amada2.innerText = contluminosos.amada2;
+    santo2.innerText = contluminosos.santo2;
+    giro2.innerText = contluminosos.giro2;
+    acto2.innerText = contluminosos.acto2;
+    credo2.innerText = contluminosos.credo2;
+    miste2.innerText = contluminosos.miste2;
+  </script>
 
-    </div>
+  <script src="contdolorosos.js"></script>
+  <script>
+    amada3.innerText = contdolorosos.amada3;
+    santo3.innerText = contdolorosos.santo3;
+    giro3.innerText = contdolorosos.giro3;
+    acto3.innerText = contdolorosos.acto3;
+    credo3.innerText = contdolorosos.credo3;
+    miste3.innerText = contdolorosos.miste3;
+  </script>
 
-    <div id="luminosos" class="section">
-        <h2>Oración Luminosos</h2>
-        <p id="amada2"></p>
+  <script src="contgozosos.js"></script>
+  <script>
+    amada4.innerText = contgozosos.amada4;
+    santo4.innerText = contgozosos.santo4;
+    giro4.innerText = contgozosos.giro4;
+    acto4.innerText = contgozosos.acto4;
+    credo4.innerText = contgozosos.credo4;
+    miste4.innerText = contgozosos.miste4;
+  </script>
 
-        <p><strong>Espíritu Santo! </strong></p>
-        <p id="santo2"></p>
+  <script src="jaculatoria.js"></script>
+  <script>
+    holas.innerText = jaculatoria.holas;
+  </script>
 
-
-        <p><strong>Giro - Oración inicial</strong></p>
-        <p id="giro2"></p>
-
-
-        <p><strong>Acto de contrición En Divina Voluntad</strong></p>
-        <p id="acto2"></p>
-
-        <p><strong>Credo</strong></p>
-        <p id="credo2"></p>
-
-        <h2>Peticiones <br /> 🙏🙏🙏</h2>
-
-        <h2>Misterios Luminosos</h2>
-        <p id="miste2"></p>
-    </div>
-
-    <div id="dolorosos" class="section">
-        <h2>Oración Dolorosos</h2>
-        <p id="amada3"></p>
-
-        <p><strong>Espíritu Santo! </strong></p>
-        <p id="santo3"></p>
-
-
-        <p><strong>Giro - Oración inicial</strong></p>
-        <p id="giro3"></p>
-
-
-        <p><strong>Acto de contrición En Divina Voluntad</strong></p>
-        <p id="acto3"></p>
-
-        <p><strong>Credo</strong></p>
-        <p id="credo3"></p>
-
-        <h2>Peticiones <br /> 🙏🙏🙏</h2>
-
-        <h2>Misterios Dolorosos</h2>
-        <p id="miste3"></p>
-
-    </div>
-
-    <div id="gozosos" class="section">
-        <h2>Oración Gozosos</h2>
-        <p id="amada4"></p>
-
-        <p><strong>Espíritu Santo! </strong></p>
-        <p id="santo4"></p>
-
-
-        <p><strong>Giro - Oración inicial</strong></p>
-        <p id="giro4"></p>
-
-
-        <p><strong>Acto de contrición En Divina Voluntad</strong></p>
-        <p id="acto4"></p>
-
-        <p><strong>Credo</strong></p>
-        <p id="credo4"></p>
-
-        <h2>Peticiones <br /> 🙏🙏🙏</h2>
-        
-
-        <h2>Misterios Gozosos</h2>
-        <p id="miste4"></p>
-
-    </div>
-    <nav>
-        <hr />
-        <a href="#" onclick="showSection('unas')">Jaculatoria</a>
-        <div id="unas" class="section">
-            <p id="holas"></p>
-        </div>
-
-        <a href="letanias.html">Letanías de la Virgen</a>
-
-    </nav>
-    
-
-    <script src="contgloriosos.js"></script>
-    <script>
-        document.getElementById('amada').innerText = contgloriosos.amada;
-        document.getElementById('santo').innerText = contgloriosos.santo;
-        document.getElementById('giro').innerText = contgloriosos.giro;
-        document.getElementById('acto').innerText = contgloriosos.acto;
-        document.getElementById('credo').innerText = contgloriosos.credo;
-        document.getElementById('miste').innerText = contgloriosos.miste;
-    </script>
-
-    <script src="contluminosos.js"></script>
-    <script>
-        document.getElementById('amada2').innerText = contluminosos.amada2;
-        document.getElementById('santo2').innerText = contluminosos.santo2;
-        document.getElementById('giro2').innerText = contluminosos.giro2;
-        document.getElementById('acto2').innerText = contluminosos.acto2;
-        document.getElementById('credo2').innerText = contluminosos.credo2;
-        document.getElementById('miste2').innerText = contluminosos.miste2;
-    </script>
-
-    <script src="contdolorosos.js"></script>
-    <script>
-        document.getElementById('amada3').innerText = contdolorosos.amada3;
-        document.getElementById('santo3').innerText = contdolorosos.santo3;
-        document.getElementById('giro3').innerText = contdolorosos.giro3;
-        document.getElementById('acto3').innerText = contdolorosos.acto3;
-        document.getElementById('credo3').innerText = contdolorosos.credo3;
-        document.getElementById('miste3').innerText = contdolorosos.miste3;
-    </script>
-
-    <script src="contgozosos.js"></script>
-    <script>
-        document.getElementById('amada4').innerText = contgozosos.amada4;
-        document.getElementById('santo4').innerText = contgozosos.santo4;
-        document.getElementById('giro4').innerText = contgozosos.giro4;
-        document.getElementById('acto4').innerText = contgozosos.acto4;
-        document.getElementById('credo4').innerText = contgozosos.credo4;
-        document.getElementById('miste4').innerText = contgozosos.miste4;
-    </script>
-
-    <script src="jaculatoria.js"></script>
-    <script>
-        document.getElementById('holas').innerText = jaculatoria.holas;
-       
-    </script>
-
-    <!-- Mostrar una sección por defecto -->
-    <script>
-        showSection('nada');
-    </script>
+  <!-- Sección por defecto -->
+  <script>showSection('gloriosos')</script>
 
 </body>
 </html>
