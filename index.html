@@ -10,7 +10,6 @@
   <link rel="icon" href="https://www.pucv.cl/uuaa/site/artic/20170609/imag/foto_0000000220170609125131.jpg">
 
   <style>
-    /* --- ESTILO GENERAL --- */
     :root {
       --fondo: #f4fcff;
       --tarjeta: #ffffff;
@@ -24,7 +23,7 @@
       font-family: 'Segoe UI', sans-serif;
       background: var(--fondo);
       color: var(--texto);
-      padding-bottom: 80px; /* para la barra inferior */
+      padding-bottom: 150px;
     }
 
     h1, h2 {
@@ -32,16 +31,23 @@
       margin-bottom: 10px;
     }
 
-    img {
-      display: block;
-      margin: auto;
+    /* 🖼️ Imagen sin recorte */
+    .img-container {
       width: 100%;
+      display: flex;
+      justify-content: center;
+      margin: 16px 0;
+    }
+
+    .img-container img {
+      width: 90%;
       max-width: 260px;
+      height: auto;
+      object-fit: contain;
       border-radius: 14px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.15);
     }
 
-    /* --- TARJETAS DE CONTENIDO --- */
     .section {
       display: none;
       padding: 15px;
@@ -53,21 +59,21 @@
     }
 
     @keyframes fade {
-      from {opacity: 0;}
-      to {opacity: 1;}
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
-    /* --- BOTONERA INFERIOR (TABS) --- */
+    /* 📱 Tabs respetando safe-area */
     .tabs {
       position: fixed;
-      bottom: 0;
+      bottom: env(safe-area-inset-bottom);
       left: 0;
       width: 100%;
       background: var(--tarjeta);
       box-shadow: 0 -3px 12px rgba(0,0,0,0.15);
       display: flex;
       justify-content: space-around;
-      padding: 12px 0;
+      padding: 12px 0 calc(12px + env(safe-area-inset-bottom));
       z-index: 999;
     }
 
@@ -78,26 +84,16 @@
       font-size: 14px;
       padding: 6px 10px;
       border-radius: 8px;
-      transition: 0.2s;
-    }
-
-    .tab:hover {
-      background: var(--primario-suave);
+      white-space: nowrap;
     }
 
     .tab.active {
       background: var(--primario-suave);
     }
 
-    /* LINKS */
     a {
       color: var(--primario);
       text-decoration: none;
-    }
-
-    nav p {
-      font-size: 15px;
-      margin: 5px 0;
     }
   </style>
 
@@ -122,7 +118,9 @@
 
   <h1>Santo Rosario</h1>
 
-  <img src="trinidad.jpg">
+  <div class="img-container">
+    <img src="trinidad.jpg" alt="Santísima Trinidad">
+  </div>
 
   <!-- SECCIONES -->
   <div id="gloriosos" class="section">
@@ -133,18 +131,11 @@
     <p id="santo"></p>
     <p><strong>Giro</strong></p>
     <p id="giro"></p>
-
-    <p>
-<strong>Acto de contrición</strong>
-</p>
-
+    <p><strong>Acto de contrición</strong></p>
     <p id="acto"></p>
-
     <p><strong>Credo</strong></p>
     <p id="credo"></p>
-
     <h2>🙏 Peticiones</h2>
-
     <p id="miste"></p>
   </div>
 
@@ -160,7 +151,6 @@
     <p id="acto2"></p>
     <p><strong>Credo</strong></p>
     <p id="credo2"></p>
-
     <h2>🙏 Peticiones</h2>
     <p id="miste2"></p>
   </div>
@@ -177,7 +167,6 @@
     <p id="acto3"></p>
     <p><strong>Credo</strong></p>
     <p id="credo3"></p>
-
     <h2>🙏 Peticiones</h2>
     <p id="miste3"></p>
   </div>
@@ -186,7 +175,7 @@
     <h2>Misterios Gozosos</h2>
     <p><strong>Oración</strong></p>
     <p id="amada4"></p>
-   <p><strong>Espíritu Santo</strong></p>
+    <p><strong>Espíritu Santo</strong></p>
     <p id="santo4"></p>
     <p><strong>Giro</strong></p>
     <p id="giro4"></p>
@@ -194,7 +183,6 @@
     <p id="acto4"></p>
     <p><strong>Credo</strong></p>
     <p id="credo4"></p>
-
     <h2>🙏 Peticiones</h2>
     <p id="miste4"></p>
   </div>
@@ -205,7 +193,7 @@
     <p><a href="letanias.html">→ Letanías de la Virgen</a></p>
   </div>
 
-  <!-- BARRA DE NAVEGACIÓN INFERIOR -->
+  <!-- TABS -->
   <div class="tabs">
     <div class="tab" data-tab="gloriosos" onclick="showSection('gloriosos')">Gloriosos</div>
     <div class="tab" data-tab="luminosos" onclick="showSection('luminosos')">Luminosos</div>
@@ -260,7 +248,6 @@
     holas.innerText = jaculatoria.holas;
   </script>
 
-  <!-- Sección por defecto -->
   <script>showSection('gloriosos')</script>
 
 </body>
