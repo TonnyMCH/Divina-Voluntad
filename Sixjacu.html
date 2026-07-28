@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaculatorias del Santo Rosario</title>
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --card-bg: #ffffff;
+            --text-color: #2c2c2c;
+            --primary-color: #6b2d5c;
+            --accent-color: #d4af37;
+            --border-color: #e0d8cc;
+            --base-font-size: 12pt;
+        }
+
+        body {
+            font-family: "Times New Roman", Times, serif;
+            font-size: var(--base-font-size);
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--card-bg);
+            padding: 8px 15px;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .controls span {
+            font-size: 10pt;
+            color: #666;
+            font-family: sans-serif;
+        }
+
+        .btn-size {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            font-size: 14pt;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 1.6em;
+            margin: 0 0 5px 0;
+            font-weight: normal;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 18px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .card-title {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+
+        .card-text {
+            text-align: justify;
+            margin: 0;
+            font-style: italic;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .card {
+                padding: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="controls">
+            <span>Tamaño de letra:</span>
+            <button class="btn-size" onclick="changeFontSize(-1)">a</button>
+            <button class="btn-size" onclick="changeFontSize(1)">A</button>
+        </div>
+
+        <header>
+            <h1>Jaculatorias para el Santo Rosario</h1>
+        </header>
+
+        <div class="card">
+            <div class="card-title">Primera Jaculatoria (Purificación interior)</div>
+            <p class="card-text">"Señor Jesús, purifícame con tu sangre preciosa, lava mi alma de toda mancha de pecado y prepárame para honrar a tu madre santísima."</p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Segunda Jaculatoria (Protección contra el enemigo)</div>
+            <p class="card-text">"San Miguel Arcángel, defiéndeme en la batalla, cubre mi mente, mi corazón y mi alma con tu escudo, que ningún espíritu del mal perturbe mi oración."</p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Tercera Jaculatoria (Consagración a la Virgen María)</div>
+            <p class="card-text">"Virgen María, madre mía, me consagro a ti en este momento, toma mi corazón, mis intenciones, mis palabras, que este rosario sea un acto de amor puro hacia ti y hacia tu hijo Jesús."</p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Cuarta Jaculatoria (Petición de gracia contemplativa)</div>
+            <p class="card-text">"Espíritu Santo, ilumina mi mente y abre mi corazón, que pueda contemplar los misterios de este rosario con fe viva y amor ardiente, guíame en esta oración."</p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Quinta Jaculatoria (Renuncia a Satanás)</div>
+            <p class="card-text">"En el nombre de Jesucristo, renuncio a Satanás, a todas sus obras y seducciones, cierro toda puerta al mal en mi vida, solo a ti Señor quiero servir."</p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Sexta Jaculatoria (Ofrenda del rosario)</div>
+            <p class="card-text">"Señor, te ofrezco este rosario por la conversión de los pecadores, por las almas del purgatorio, por la paz del mundo y por las intenciones del Santo Padre, que no sea en vano ninguna de mis oraciones."</p>
+        </div>
+    </div>
+
+    <script>
+        let currentSize = 12;
+
+        function changeFontSize(delta) {
+            currentSize += delta;
+            if (currentSize < 10) currentSize = 10;
+            if (currentSize > 24) currentSize = 24;
+            document.documentElement.style.setProperty('--base-font-size', currentSize + 'pt');
+        }
+    </script>
+
+</body>
+</html>
